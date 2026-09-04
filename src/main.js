@@ -1,214 +1,162 @@
 import './style.css';
 import { magicianConfig } from './config.js';
 import { MagicHeroScene } from './threeScene.js';
-import { BookingManager } from './bookingManager.js';
-import { MediaManager } from './mediaManager.js';
-import { soundFX } from './audioEffects.js';
 
-// Application Controller
-class MagicianApp {
+class KelvinApp {
   constructor() {
     this.threeScene = null;
-    this.bookingManager = null;
-    this.mediaManager = null;
     this.init();
   }
 
   init() {
-    this.renderDynamicContent();
     this.initThreeHero();
-    this.bookingManager = new BookingManager();
-    this.mediaManager = new MediaManager();
-    this.initSoundToggle();
-    this.initNavigation();
-    this.initInteractiveCardControls();
-    this.initFaqAccordion();
-    this.initMobileNav();
-  }
-
-  renderDynamicContent() {
-    // Populate Packages
-    const packagesContainer = document.getElementById('packagesContainer');
-    if (packagesContainer) {
-      packagesContainer.innerHTML = magicianConfig.packages.map(pkg => `
-        <article class="package-card" id="pkg-${pkg.id}">
-          <div class="package-img-holder">
-            <img src="${pkg.image}" alt="${pkg.title}" loading="lazy" />
-            <span class="package-badge">${pkg.badge}</span>
-          </div>
-          <div class="package-body">
-            <h3 class="serif-font">${pkg.title}</h3>
-            <div class="package-subtitle">${pkg.subtitle}</div>
-            <div class="package-meta">
-              <span>⏱ ${pkg.duration}</span>
-              <span>👥 ${pkg.idealFor}</span>
-            </div>
-            <p class="package-desc">${pkg.description}</p>
-            <ul class="package-features">
-              ${pkg.features.map(f => `<li>${f}</li>`).join('')}
-            </ul>
-            <button class="btn btn-gold package-select-btn" data-package="${pkg.title}">
-              Inquire This Package
-            </button>
-          </div>
-        </article>
-      `).join('');
-    }
-
-    // Populate Testimonials
-    const testimonialsContainer = document.getElementById('testimonialsContainer');
-    if (testimonialsContainer) {
-      testimonialsContainer.innerHTML = magicianConfig.testimonials.map(t => `
-        <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p class="testimonial-quote">"${t.quote}"</p>
-          <div class="testimonial-author">
-            <strong>${t.author}</strong>
-            <span>${t.role} — ${t.event}</span>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    // Populate FAQs
-    const faqsContainer = document.getElementById('faqsContainer');
-    if (faqsContainer) {
-      faqsContainer.innerHTML = magicianConfig.faqs.map((faq, idx) => `
-        <div class="faq-item ${idx === 0 ? 'active' : ''}">
-          <button class="faq-question">
-            <span>${faq.q}</span>
-            <span class="faq-toggle-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>${faq.a}</p>
-          </div>
-        </div>
-      `).join('');
-    }
+    this.initVideoBackground();
+    this.initInquiryForm();
+    this.initCardInteractions();
   }
 
   initThreeHero() {
-    const canvasContainer = document.getElementById('heroCanvasContainer');
+    const canvasContainer = document.getElementById('threeHeroCanvas');
     if (canvasContainer) {
       this.threeScene = new MagicHeroScene(canvasContainer);
     }
 
-    // Listen for 3D card clicks
-    window.addEventListener('magic-card-selected', (e) => {
-      const { name, isFlipped } = e.detail;
-      const statusPill = document.getElementById('oracleStatusText');
-      if (statusPill) {
+    const shuffleBtn = document.getElementById('shuffleDeckBtn');
+    if (shuffleBtn && this.threeScene) {
+      shuffleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.threeScene.shuffleDeck();
+      });
+    }
+  }
+
+  initCardInteractions() {
+    const hintText = document.getElementById('canvasHintText');
+    const messages = {
+      '♣': 'Ace of Clubs — Master of Sleight of Hand',
+      '♦': 'Ace of Diamonds — Rare, Brilliant Wonders',
+      '♠': 'Ace of Spades — Psychological Mystery',
+      '♥': 'Ace of Hearts — Enchanting Your Moments'
+    };
+
+    window.addEventListener('kelvin-card-click', (e) => {
+      const { suit, isFlipped } = e.detail;
+      if (hintText) {
         if (isFlipped) {
-          statusPill.innerHTML = `Revealed: <strong>${name}</strong> ✦ Experience Wonder`;
+          hintText.textContent = messages[suit] || '✦ Card Inspected • Enchant your moments';
         } else {
-          statusPill.textContent = 'Touch or click any card in the 3D space to reveal';
+          hintText.textContent = 'Move cursor to tilt • Click any card to flip';
         }
+      }
+    });
+
+    window.addEventListener('kelvin-card-shuffled', () => {
+      if (hintText) {
+        hintText.textContent = '✦ Cards Shuffled • Move cursor to re-align';
+        setTimeout(() => {
+          if (hintText) hintText.textContent = 'Move cursor to tilt • Click any card to flip';
+        }, 3200);
       }
     });
   }
 
-  initInteractiveCardControls() {
-    const shuffleBtn = document.getElementById('shuffleCardsBtn');
-    const revealBtn = document.getElementById('revealCardBtn');
+  initVideoBackground() {
+    const video = document.getElementById('bgVideo');
+    const toggleBtn = document.getElementById('videoToggleBtn');
+    const toggleIcon = document.getElementById('videoToggleIcon');
 
-    if (shuffleBtn) {
-      shuffleBtn.addEventListener('click', () => {
-        if (this.threeScene) {
-          this.threeScene.shuffleDeck();
-        }
-      });
-    }
+    if (!video || !toggleBtn) return;
 
-    if (revealBtn) {
-      revealBtn.addEventListener('click', () => {
-        if (this.threeScene) {
-          this.threeScene.revealRandomCard();
-        }
-      });
-    }
-  }
-
-  initSoundToggle() {
-    const btn = document.getElementById('soundToggleBtn');
-    if (!btn) return;
-
-    btn.addEventListener('click', () => {
-      const isMuted = soundFX.toggleMute();
-      btn.classList.toggle('active', !isMuted);
-      btn.setAttribute('aria-label', isMuted ? 'Unmute magical sound effects' : 'Mute sound effects');
-      const icon = btn.querySelector('.sound-icon');
-      if (icon) {
-        icon.textContent = isMuted ? '🔇' : '🔊';
-      }
+    // Handle browser autoplay policy
+    video.play().catch(() => {
+      // Autoplay with audio blocked or slow connection; silent fallback
     });
-  }
 
-  initNavigation() {
-    const header = document.querySelector('.site-header');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        header?.classList.add('scrolled');
+    toggleBtn.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+        if (toggleIcon) toggleIcon.textContent = '⏸';
       } else {
-        header?.classList.remove('scrolled');
+        video.pause();
+        if (toggleIcon) toggleIcon.textContent = '▶';
       }
-    }, { passive: true });
-
-    // Smooth scroll for anchors
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', (e) => {
-        const href = anchor.getAttribute('href');
-        if (href && href.length > 1) {
-          const target = document.querySelector(href);
-          if (target) {
-            e.preventDefault();
-            soundFX.playSparkle();
-            target.scrollIntoView({ behavior: 'smooth' });
-            // Close mobile menu if open
-            const navLinks = document.getElementById('navLinks');
-            if (navLinks) navLinks.style.display = '';
-          }
-        }
-      });
     });
   }
 
-  initFaqAccordion() {
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', () => {
-        soundFX.playSparkle();
-        const item = btn.closest('.faq-item');
-        const isActive = item.classList.contains('active');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-        if (!isActive) {
-          item.classList.add('active');
-        }
-      });
-    });
-  }
+  initInquiryForm() {
+    const form = document.getElementById('inquiryForm');
+    const successCard = document.getElementById('inquirySuccess');
+    const successMsg = document.getElementById('successMsg');
 
-  initMobileNav() {
-    const toggle = document.getElementById('mobileNavToggle');
-    const navLinks = document.getElementById('navLinks');
-    if (toggle && navLinks) {
-      toggle.addEventListener('click', () => {
-        const isOpen = navLinks.style.display === 'flex';
-        navLinks.style.display = isOpen ? 'none' : 'flex';
-        if (!isOpen) {
-          navLinks.style.flexDirection = 'column';
-          navLinks.style.position = 'absolute';
-          navLinks.style.top = '100%';
-          navLinks.style.left = '0';
-          navLinks.style.width = '100%';
-          navLinks.style.background = 'rgba(7, 7, 12, 0.98)';
-          navLinks.style.padding = '24px';
-          navLinks.style.borderBottom = '1px solid var(--border-gold)';
-        }
-      });
+    if (!form) return;
+
+    // Pre-fill tomorrow as minimum date
+    const dateInput = document.getElementById('eventDate');
+    if (dateInput) {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      dateInput.min = tomorrow.toISOString().split('T')[0];
     }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('clientName')?.value.trim();
+      const contact = document.getElementById('clientContact')?.value.trim();
+      const phone = document.getElementById('clientPhone')?.value.trim();
+      const date = document.getElementById('eventDate')?.value;
+      const eventType = document.getElementById('eventType')?.value;
+      const notes = document.getElementById('notes')?.value.trim();
+
+      if (!name || !contact || !date || !eventType) {
+        alert('Please fill in the required fields to submit your enquiry.');
+        return;
+      }
+
+      // Save inquiry locally for Kelvin's records
+      const inquiry = {
+        id: 'KB-' + Math.random().toString(36).substring(2, 8).toUpperCase(),
+        timestamp: new Date().toISOString(),
+        name,
+        contact,
+        phone,
+        date,
+        eventType,
+        notes
+      };
+
+      try {
+        const stored = JSON.parse(localStorage.getItem('kelvin_inquiries') || '[]');
+        stored.unshift(inquiry);
+        localStorage.setItem('kelvin_inquiries', JSON.stringify(stored));
+      } catch (err) {
+        console.warn('LocalStorage error:', err);
+      }
+
+      // Display clean success state
+      if (successCard && successMsg) {
+        successMsg.innerHTML = `Thank you, <strong>${escapeHtml(name)}</strong>! Your enquiry for a <strong>${escapeHtml(eventType)}</strong> on <strong>${escapeHtml(date)}</strong> has been received. Kelvin will reply to <em>${escapeHtml(contact)}</em> shortly.`;
+        form.style.display = 'none';
+        successCard.style.display = 'block';
+
+        // Smooth scroll to success message
+        successCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
   }
 }
 
-// Bootstrap application on DOM ready
-document.addEventListener('DOMContentLoaded', () => {
-  new MagicianApp();
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, (m) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  }[m]));
+}
+
+// Boot application
+window.addEventListener('DOMContentLoaded', () => {
+  new KelvinApp();
 });
