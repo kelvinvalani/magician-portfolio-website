@@ -10,9 +10,9 @@ class KelvinApp {
 
   init() {
     this.initThreeHero();
+    this.initScrollChoreography();
     this.initVideoBackground();
     this.initInquiryForm();
-    this.initCardInteractions();
   }
 
   initThreeHero() {
@@ -20,44 +20,20 @@ class KelvinApp {
     if (canvasContainer) {
       this.threeScene = new MagicHeroScene(canvasContainer);
     }
-
-    const shuffleBtn = document.getElementById('shuffleDeckBtn');
-    if (shuffleBtn && this.threeScene) {
-      shuffleBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        this.threeScene.shuffleDeck();
-      });
-    }
   }
 
-  initCardInteractions() {
-    const hintText = document.getElementById('canvasHintText');
-    const messages = {
-      '♣': 'Ace of Clubs — Master of Sleight of Hand',
-      '♦': 'Ace of Diamonds — Rare, Brilliant Wonders',
-      '♠': 'Ace of Spades — Psychological Mystery',
-      '♥': 'Ace of Hearts — Enchanting Your Moments'
+  initScrollChoreography() {
+    if (!this.threeScene) return;
+
+    const onScroll = () => {
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+      this.threeScene.setScrollProgress(progress);
     };
 
-    window.addEventListener('kelvin-card-click', (e) => {
-      const { suit, isFlipped } = e.detail;
-      if (hintText) {
-        if (isFlipped) {
-          hintText.textContent = messages[suit] || '✦ Card Inspected • Enchant your moments';
-        } else {
-          hintText.textContent = 'Move cursor to tilt • Click any card to flip';
-        }
-      }
-    });
-
-    window.addEventListener('kelvin-card-shuffled', () => {
-      if (hintText) {
-        hintText.textContent = '✦ Cards Shuffled • Move cursor to re-align';
-        setTimeout(() => {
-          if (hintText) hintText.textContent = 'Move cursor to tilt • Click any card to flip';
-        }, 3200);
-      }
-    });
+    window.addEventListener('scroll', onScroll, { passive: true });
+    // Initial calculation
+    onScroll();
   }
 
   initVideoBackground() {
@@ -67,9 +43,8 @@ class KelvinApp {
 
     if (!video || !toggleBtn) return;
 
-    // Handle browser autoplay policy
     video.play().catch(() => {
-      // Autoplay with audio blocked or slow connection; silent fallback
+      // Browser autoplay policy fallback
     });
 
     toggleBtn.addEventListener('click', () => {
@@ -90,7 +65,7 @@ class KelvinApp {
 
     if (!form) return;
 
-    // Pre-fill tomorrow as minimum date
+    // Tomorrow as minimum date
     const dateInput = document.getElementById('eventDate');
     if (dateInput) {
       const tomorrow = new Date();
@@ -109,11 +84,11 @@ class KelvinApp {
       const notes = document.getElementById('notes')?.value.trim();
 
       if (!name || !contact || !date || !eventType) {
-        alert('Please fill in the required fields to submit your enquiry.');
+        alert('Please complete the required fields to submit your enquiry.');
         return;
       }
 
-      // Save inquiry locally for Kelvin's records
+      // Save inquiry to localStorage
       const inquiry = {
         id: 'KB-' + Math.random().toString(36).substring(2, 8).toUpperCase(),
         timestamp: new Date().toISOString(),
@@ -133,13 +108,12 @@ class KelvinApp {
         console.warn('LocalStorage error:', err);
       }
 
-      // Display clean success state
+      // Render stationery confirmation
       if (successCard && successMsg) {
-        successMsg.innerHTML = `Thank you, <strong>${escapeHtml(name)}</strong>! Your enquiry for a <strong>${escapeHtml(eventType)}</strong> on <strong>${escapeHtml(date)}</strong> has been received. Kelvin will reply to <em>${escapeHtml(contact)}</em> shortly.`;
+        successMsg.innerHTML = `Thank you, <strong>${escapeHtml(name)}</strong>. Your enquiry for a <strong>${escapeHtml(eventType)}</strong> on <strong>${escapeHtml(date)}</strong> has been sealed. Kelvin will reply directly to <em>${escapeHtml(contact)}</em>.`;
         form.style.display = 'none';
         successCard.style.display = 'block';
 
-        // Smooth scroll to success message
         successCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     });
@@ -156,7 +130,6 @@ function escapeHtml(str) {
   }[m]));
 }
 
-// Boot application
 window.addEventListener('DOMContentLoaded', () => {
   new KelvinApp();
 });

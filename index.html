@@ -4,28 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Magic By Kelvin | Enchant Your Moments</title>
-  <meta name="description" content="Tailor-made acts for any occasion. Elegant sleight of hand and bespoke magical experiences by Kelvin. DM for enquiries and bookings." />
+  <meta name="description" content="Tailor-made acts for any occasion. Sleight of hand, intimate wonder, and bespoke illusions by Kelvin." />
   <meta name="theme-color" content="#faf7f0" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23faf7f0' stroke='%23c5a059' stroke-width='3'/><text x='50' y='63' font-size='42' font-family='serif' fill='%231f1e1d' text-anchor='middle'>K</text></svg>" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23faf7f0' stroke='%23c5a059' stroke-width='2'/><text x='50' y='64' font-size='42' font-family='serif' fill='%231f1e1d' text-anchor='middle'>K</text></svg>" />
 
-  <!-- Google Fonts: Editorial Serifs and Script -->
+  <!-- Google Fonts: Editorial Serifs and High-Fashion Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- AMBIENT VIDEO BACKGROUND COMPILATION -->
+  <!-- AMBIENT VIDEO BACKGROUND -->
   <div class="video-bg-container" id="videoBgContainer" aria-hidden="true">
     <video id="bgVideo" class="bg-video" autoplay muted loop playsinline poster="/images/magician-hero.jpg">
       <source src="/videos/reel.mp4" type="video/mp4">
     </video>
-    <!-- Soft warm cream overlay keeping the aesthetic calm and serene -->
     <div class="video-ambient-tint"></div>
     <div class="video-grain"></div>
   </div>
 
-  <!-- MINIMALIST SITE HEADER -->
+  <!-- PERSISTENT SCROLL-DRIVEN THREE.JS 3D CANVAS -->
+  <div id="threeHeroCanvas" class="three-stage-canvas" aria-hidden="true"></div>
+
+  <!-- EDITORIAL SITE HEADER -->
   <header class="site-header" id="siteHeader">
     <div class="header-container">
       <a href="#hero" class="brand-group" aria-label="Magic By Kelvin Home">
@@ -34,157 +36,158 @@
       </a>
 
       <div class="header-actions">
-        <div class="social-header-links">
-          <a href="https://instagram.com/magicbykelvin" target="_blank" rel="noopener noreferrer" class="social-pill" title="Instagram @magicbykelvin">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        <div class="header-socials">
+          <a href="https://instagram.com/magicbykelvin" target="_blank" rel="noopener noreferrer" class="header-link">
             <span>Instagram</span>
           </a>
-          <a href="https://tiktok.com/@magicbykelvin" target="_blank" rel="noopener noreferrer" class="social-pill" title="TikTok @magicbykelvin">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+          <span class="sep">/</span>
+          <a href="https://tiktok.com/@magicbykelvin" target="_blank" rel="noopener noreferrer" class="header-link">
             <span>TikTok</span>
           </a>
         </div>
-        <a href="#inquiry" class="btn btn-gold btn-sm">Inquire Date</a>
+        <a href="#inquiry" class="btn btn-outline btn-sm">Reserve Date</a>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- HERO SECTION WITH 3D FANNED CARDS -->
+    <!-- HERO SECTION -->
     <section class="hero-section" id="hero">
       <div class="hero-content">
         <div class="hero-eyebrow">Tailor-made acts for any occasion</div>
         <h1 class="hero-main-title">Magic By Kelvin</h1>
         <p class="hero-script-tagline">Enchant your moments</p>
-
-        <!-- THREE.JS INTERACTIVE 3D VISUAL CONTAINER -->
-        <div class="three-canvas-wrapper" id="threeCanvasWrapper">
-          <div id="threeHeroCanvas" class="three-canvas" title="Move your cursor to tilt in 3D • Click any card to flip"></div>
-          
-          <div class="canvas-hint-pill">
-            <span class="sparkle-icon">✦</span>
-            <span id="canvasHintText">Move cursor to tilt • Click any card to flip</span>
-            <button id="shuffleDeckBtn" class="pill-action-btn" title="Shuffle cards in 3D">Shuffle</button>
-          </div>
-        </div>
+        
+        <!-- Spatial placeholder maintaining perfect vertical pacing for the 3D card fan -->
+        <div class="hero-card-stage-spacer"></div>
 
         <div class="hero-ctas">
-          <a href="#inquiry" class="btn btn-gold">
-            <span>Book An Experience</span>
+          <a href="#inquiry" class="btn btn-solid">
+            <span>Request Booking</span>
             <span class="arrow">↓</span>
           </a>
           <a href="https://instagram.com/magicbykelvin" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
             <span>DM on Instagram</span>
           </a>
+        </div>
+
+        <div class="scroll-down-cue">
+          <span class="cue-line"></span>
+          <span class="cue-text">Scroll to explore</span>
         </div>
       </div>
     </section>
 
-    <!-- STREAMLINED INQUIRY FORM SECTION -->
+    <!-- EDITORIAL STATIONERY INQUIRY SECTION -->
     <section class="inquiry-section" id="inquiry">
-      <div class="inquiry-card">
-        <div class="inquiry-header">
-          <span class="gold-floret">✦ ✦ ✦</span>
-          <h2 class="inquiry-title">Enquiries & Bookings</h2>
-          <p class="inquiry-subtext">Tailor-made acts for weddings, private dinners, and bespoke gatherings.</p>
-        </div>
+      <div class="stationery-sheet">
+        <div class="sheet-inner">
+          <div class="sheet-corner top-left"></div>
+          <div class="sheet-corner top-right"></div>
+          <div class="sheet-corner bottom-left"></div>
+          <div class="sheet-corner bottom-right"></div>
 
-        <form id="inquiryForm" class="inquiry-form" novalidate>
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="clientName">Your Name <span class="required">*</span></label>
-              <input type="text" id="clientName" name="clientName" placeholder="e.g. Eleanor Vance" required />
+          <div class="inquiry-header">
+            <div class="sheet-suits">♣ &nbsp; ♦ &nbsp; ♠ &nbsp; ♥</div>
+            <h2 class="inquiry-title">Enquiries & Bookings</h2>
+            <p class="inquiry-subtext">Tailor-made acts for weddings, private dinners, and bespoke gatherings.</p>
+          </div>
+
+          <form id="inquiryForm" class="stationery-form" novalidate>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="clientName">Your Full Name <span class="required">*</span></label>
+                <input type="text" id="clientName" name="clientName" placeholder="Eleanor Vance" required />
+              </div>
+
+              <div class="form-group">
+                <label for="clientContact">Email Address <span class="required">*</span></label>
+                <input type="email" id="clientContact" name="clientContact" placeholder="eleanor@example.com" required />
+              </div>
+
+              <div class="form-group">
+                <label for="clientPhone">Phone / Instagram Handle</label>
+                <input type="text" id="clientPhone" name="clientPhone" placeholder="@eleanor or phone number" />
+              </div>
+
+              <div class="form-group">
+                <label for="eventDate">Event Date <span class="required">*</span></label>
+                <input type="date" id="eventDate" name="eventDate" required />
+              </div>
+
+              <div class="form-group full-width">
+                <label for="eventType">Occasion / Event Format <span class="required">*</span></label>
+                <select id="eventType" name="eventType" required>
+                  <option value="" disabled selected>Select event occasion...</option>
+                  <option value="Luxury Wedding Reception">Luxury Wedding Reception</option>
+                  <option value="Private Soirée / Intimate Dinner">Private Soirée / Intimate Dinner</option>
+                  <option value="Corporate Gala & Brand Activation">Corporate Gala & Brand Activation</option>
+                  <option value="Cocktail & VIP Reception">Cocktail & VIP Reception</option>
+                  <option value="Milestone Birthday & Anniversary">Milestone Birthday & Anniversary</option>
+                  <option value="Other Bespoke Celebration">Other Bespoke Celebration</option>
+                </select>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="notes">Special Notes or Event Vision</label>
+                <textarea id="notes" name="notes" rows="3" placeholder="Venue, guest count, or any special moments you would love Kelvin to create..."></textarea>
+              </div>
             </div>
 
-            <div class="form-group">
-              <label for="clientContact">Email Address <span class="required">*</span></label>
-              <input type="email" id="clientContact" name="clientContact" placeholder="e.g. eleanor@example.com" required />
-            </div>
+            <button type="submit" class="btn btn-solid btn-submit" id="submitBtn">
+              <span>Send Booking Enquiry</span>
+              <span class="btn-arrow">→</span>
+            </button>
+          </form>
 
-            <div class="form-group">
-              <label for="clientPhone">Phone / Instagram Handle</label>
-              <input type="text" id="clientPhone" name="clientPhone" placeholder="e.g. @eleanor or +1 (555) 0192" />
-            </div>
-
-            <div class="form-group">
-              <label for="eventDate">Event Date <span class="required">*</span></label>
-              <input type="date" id="eventDate" name="eventDate" required />
-            </div>
-
-            <div class="form-group full-width">
-              <label for="eventType">Occasion / Event Type <span class="required">*</span></label>
-              <select id="eventType" name="eventType" required>
-                <option value="" disabled selected>Select event occasion...</option>
-                <option value="Luxury Wedding Reception">Luxury Wedding Reception</option>
-                <option value="Private Soirée / Intimate Dinner">Private Soirée / Intimate Dinner</option>
-                <option value="Corporate Gala & Brand Activation">Corporate Gala & Brand Activation</option>
-                <option value="Cocktail & VIP Reception">Cocktail & VIP Reception</option>
-                <option value="Milestone Birthday & Anniversary">Milestone Birthday & Anniversary</option>
-                <option value="Other Bespoke Celebration">Other Bespoke Celebration</option>
-              </select>
-            </div>
-
-            <div class="form-group full-width">
-              <label for="notes">Tell Kelvin About Your Event</label>
-              <textarea id="notes" name="notes" rows="3" placeholder="Venue location, guest count, or any special moments you'd love to create..."></textarea>
+          <!-- SUCCESS STATE -->
+          <div class="inquiry-success" id="inquirySuccess" style="display: none;">
+            <div class="success-monogram">K</div>
+            <h3>Enquiry Received</h3>
+            <p id="successMsg">Thank you! Your enquiry has been received. Kelvin will reach out directly within 24 hours.</p>
+            <div class="success-actions">
+              <a href="https://instagram.com/magicbykelvin" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                <span>Send direct DM on Instagram</span>
+                <span>→</span>
+              </a>
             </div>
           </div>
 
-          <button type="submit" class="btn btn-gold btn-submit" id="submitBtn">
-            <span>Send Booking Enquiry</span>
-            <span>✦</span>
-          </button>
-        </form>
-
-        <!-- SUBMISSION CONFIRMATION NOTICE (Hidden initially) -->
-        <div class="inquiry-success" id="inquirySuccess" style="display: none;">
-          <div class="success-seal">✦</div>
-          <h3>Enquiry Received</h3>
-          <p id="successMsg">Thank you! Your inquiry has been sent directly to Kelvin. Expect a warm reply within 24 hours.</p>
-          <div class="success-actions">
-            <a href="https://instagram.com/magicbykelvin" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
-              <span>Send direct DM on Instagram</span>
-              <span>→</span>
+          <div class="direct-dm-callout">
+            <span>Prefer instant conversation?</span>
+            <a href="https://instagram.com/magicbykelvin" target="_blank" rel="noopener noreferrer">
+              DM @magicbykelvin on Instagram
             </a>
           </div>
-        </div>
-
-        <div class="direct-dm-callout">
-          <span>Prefer instant messaging?</span>
-          <a href="https://instagram.com/magicbykelvin" target="_blank" rel="noopener noreferrer">
-            DM @magicbykelvin on Instagram
-          </a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- MINIMALIST FOOTER -->
+  <!-- EDITORIAL FOOTER -->
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-brand">
         <div class="footer-logo">Magic By Kelvin</div>
-        <p class="footer-tagline">Enchant your moments • Tailor-made acts for any occasion</p>
+        <p class="footer-tagline">Enchant your moments &bull; Tailor-made acts for any occasion</p>
       </div>
 
       <div class="footer-socials">
-        <a href="https://instagram.com/magicbykelvin" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Instagram">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-          <span>@magicbykelvin</span>
+        <a href="https://instagram.com/magicbykelvin" target="_blank" rel="noopener noreferrer" class="footer-link">
+          <span>Instagram</span>
         </a>
-        <a href="https://tiktok.com/@magicbykelvin" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="TikTok">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+        <span class="dot">&bull;</span>
+        <a href="https://tiktok.com/@magicbykelvin" target="_blank" rel="noopener noreferrer" class="footer-link">
           <span>TikTok</span>
         </a>
-        <a href="mailto:kelvin@magicbykelvin.com" class="footer-social-link" title="Email">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-          <span>kelvin@magicbykelvin.com</span>
+        <span class="dot">&bull;</span>
+        <a href="mailto:kelvin@magicbykelvin.com" class="footer-link">
+          <span>Email Kelvin</span>
         </a>
       </div>
 
       <div class="footer-bottom-copy">
-        © 2026 Magic By Kelvin. All rights reserved. DM for enquiries and bookings.
+        &copy; 2026 Magic By Kelvin. All rights reserved. DM for enquiries and bookings.
       </div>
     </div>
   </footer>

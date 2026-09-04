@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-// Procedural high-resolution texture generator matching the "Magic By Kelvin" poster
+// Procedural high-resolution texture generator matching Kelvin's poster
 function generateCardTexture(suit, rank, isBack = false) {
   const canvas = document.createElement('canvas');
   canvas.width = 512;
@@ -10,25 +10,25 @@ function generateCardTexture(suit, rank, isBack = false) {
   if (isBack) {
     // Elegant warm cream and subtle gold filigree back
     const bgGrad = ctx.createLinearGradient(0, 0, 512, 760);
-    bgGrad.addColorStop(0, '#fbf8f1');
-    bgGrad.addColorStop(1, '#f3ede0');
+    bgGrad.addColorStop(0, '#faf6ee');
+    bgGrad.addColorStop(1, '#f2ece0');
     ctx.fillStyle = bgGrad;
     ctx.fillRect(0, 0, 512, 760);
 
     // Outer double gold border
     ctx.strokeStyle = '#c5a059';
-    ctx.lineWidth = 6;
-    ctx.strokeRect(18, 18, 476, 724);
+    ctx.lineWidth = 5;
+    ctx.strokeRect(16, 16, 480, 728);
 
-    ctx.strokeStyle = '#e6c888';
-    ctx.lineWidth = 2;
-    ctx.strokeRect(28, 28, 456, 704);
+    ctx.strokeStyle = '#dfc285';
+    ctx.lineWidth = 1.5;
+    ctx.strokeRect(26, 26, 460, 708);
 
     // Geometric diamond lattice
     ctx.save();
-    ctx.strokeStyle = 'rgba(197, 160, 89, 0.22)';
-    ctx.lineWidth = 1.5;
-    const step = 40;
+    ctx.strokeStyle = 'rgba(197, 160, 89, 0.18)';
+    ctx.lineWidth = 1.2;
+    const step = 42;
     for (let x = -760; x < 1200; x += step) {
       ctx.beginPath();
       ctx.moveTo(x, 0);
@@ -46,13 +46,13 @@ function generateCardTexture(suit, rank, isBack = false) {
     ctx.save();
     ctx.translate(256, 380);
 
-    ctx.fillStyle = '#faf6ed';
+    ctx.fillStyle = '#fdfbf7';
     ctx.beginPath();
-    ctx.arc(0, 0, 90, 0, Math.PI * 2);
+    ctx.arc(0, 0, 88, 0, Math.PI * 2);
     ctx.fill();
 
     ctx.strokeStyle = '#c5a059';
-    ctx.lineWidth = 3;
+    ctx.lineWidth = 2.5;
     ctx.stroke();
 
     ctx.beginPath();
@@ -61,17 +61,17 @@ function generateCardTexture(suit, rank, isBack = false) {
     ctx.lineWidth = 1;
     ctx.stroke();
 
-    // MBK monogram
-    ctx.fillStyle = '#26221c';
-    ctx.font = 'italic 34px "Playfair Display", serif';
+    // Monogram & text
+    ctx.fillStyle = '#22201d';
+    ctx.font = 'italic 34px "Cormorant Garamond", Georgia, serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText('Magic By Kelvin', 0, -8);
 
     ctx.fillStyle = '#b89047';
-    ctx.font = '16px "Playfair Display", serif';
-    ctx.letterSpacing = '3px';
-    ctx.fillText('ENCHANT', 0, 26);
+    ctx.font = '14px "Plus Jakarta Sans", sans-serif';
+    ctx.letterSpacing = '4px';
+    ctx.fillText('ENCHANT', 0, 24);
     ctx.restore();
 
   } else {
@@ -82,48 +82,48 @@ function generateCardTexture(suit, rank, isBack = false) {
     ctx.fillStyle = '#fdfbf7';
     ctx.fillRect(0, 0, 512, 760);
 
-    // Outer crisp gold edge definition
+    // Outer crisp gold edge
     ctx.strokeStyle = '#c5a059';
-    ctx.lineWidth = 5;
-    ctx.strokeRect(6, 6, 500, 748);
+    ctx.lineWidth = 4.5;
+    ctx.strokeRect(8, 8, 496, 744);
 
-    // Fine luxury inner border
-    ctx.strokeStyle = 'rgba(197, 160, 89, 0.6)';
-    ctx.lineWidth = 2;
-    ctx.strokeRect(24, 24, 464, 712);
+    // Inner fine border
+    ctx.strokeStyle = 'rgba(197, 160, 89, 0.45)';
+    ctx.lineWidth = 1.5;
+    ctx.strokeRect(22, 22, 468, 716);
 
     // Top-left rank & suit
     ctx.fillStyle = mainColor;
-    ctx.font = 'bold 54px "Playfair Display", Georgia, serif';
+    ctx.font = 'bold 52px "Cormorant Garamond", Georgia, serif';
     ctx.textAlign = 'center';
-    ctx.fillText(rank, 65, 80);
-    ctx.font = '44px serif';
-    ctx.fillText(suit, 65, 130);
+    ctx.fillText(rank, 62, 76);
+    ctx.font = '40px serif';
+    ctx.fillText(suit, 62, 122);
 
     // Bottom-right inverted rank & suit
     ctx.save();
-    ctx.translate(512 - 65, 760 - 80);
+    ctx.translate(512 - 62, 760 - 76);
     ctx.rotate(Math.PI);
-    ctx.font = 'bold 54px "Playfair Display", Georgia, serif';
+    ctx.font = 'bold 52px "Cormorant Garamond", Georgia, serif';
     ctx.fillText(rank, 0, 0);
-    ctx.font = '44px serif';
-    ctx.fillText(suit, 0, 50);
+    ctx.font = '40px serif';
+    ctx.fillText(suit, 0, 46);
     ctx.restore();
 
     // Central suit symbol
     ctx.save();
     ctx.translate(256, 380);
     ctx.fillStyle = mainColor;
-    ctx.font = '150px serif';
+    ctx.font = '140px serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(suit, 0, -10);
 
-    // Script text at bottom center
+    // Understated footer label
     ctx.fillStyle = '#8f774e';
-    ctx.font = 'italic 20px "Playfair Display", Georgia, serif';
-    ctx.letterSpacing = '2px';
-    ctx.fillText('MAGIC BY KELVIN', 0, 240);
+    ctx.font = '300 16px "Cormorant Garamond", Georgia, serif';
+    ctx.letterSpacing = '3px';
+    ctx.fillText('MAGIC BY KELVIN', 0, 235);
     ctx.restore();
   }
 
@@ -138,11 +138,12 @@ export class MagicHeroScene {
     this.cards = [];
     this.particles = null;
     this.mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
+    this.scroll = { current: 0, target: 0, velocity: 0 };
     this.raycaster = new THREE.Raycaster();
     this.pointer = new THREE.Vector2();
     this.hoveredCard = null;
-    this.isSpread = true;
     this.clock = new THREE.Clock();
+    this.lastScrollY = window.scrollY;
 
     this.init();
     this.setupEvents();
@@ -150,60 +151,96 @@ export class MagicHeroScene {
   }
 
   init() {
-    const width = this.container.clientWidth || window.innerWidth;
-    const height = this.container.clientHeight || 520;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
 
     // 1. Scene
     this.scene = new THREE.Scene();
 
     // 2. Camera
-    this.camera = new THREE.PerspectiveCamera(38, width / height, 0.1, 100);
-    this.camera.position.set(0, 0, 7.2);
+    this.camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
+    this.camera.position.set(0, 0, 7.5);
 
-    // 3. Renderer with transparent background for blending with video overlay
-    this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
+    // 3. Renderer with transparent background
+    this.renderer = new THREE.WebGLRenderer({
+      antialias: true,
+      alpha: true,
+      powerPreference: 'high-performance'
+    });
     this.renderer.setSize(width, height);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
-    this.renderer.shadowMap.enabled = false; // Soft clean studio aesthetic
 
     this.container.innerHTML = '';
     this.container.appendChild(this.renderer.domElement);
 
-    // 4. Lighting - Crisp, luminous warm studio lighting
-    const ambientLight = new THREE.AmbientLight(0xfffdf7, 2.4);
+    // 4. Studio Lighting
+    const ambientLight = new THREE.AmbientLight(0xfffcf5, 2.4);
     this.scene.add(ambientLight);
 
     const keyLight = new THREE.DirectionalLight(0xffffff, 1.8);
-    keyLight.position.set(0, 5, 8);
+    keyLight.position.set(0, 6, 8);
     this.scene.add(keyLight);
 
-    const fillLight = new THREE.DirectionalLight(0xfff3db, 1.2);
+    const fillLight = new THREE.DirectionalLight(0xfff4dc, 1.2);
     fillLight.position.set(-4, -2, 6);
     this.scene.add(fillLight);
 
-    const goldRimLight = new THREE.PointLight(0xe8c878, 2.0, 15);
+    const goldRimLight = new THREE.PointLight(0xe8c878, 2.0, 16);
     goldRimLight.position.set(4, 2, 5);
     this.scene.add(goldRimLight);
 
-    // 5. Build the 4 iconic cards matching Kelvin's poster: ♣ Clubs, ♦ Diamonds, ♠ Spades, ♥ Hearts
+    // 5. Build the 4 iconic cards matching Kelvin's poster
     this.createFannedDeck();
 
-    // 6. Ambient golden dust particles
+    // 6. Ambient golden stardust
     this.createGoldenParticles();
   }
 
   createFannedDeck() {
-    // 4 cards in exact order of Kelvin's poster: Club, Diamond, Spade, Heart
+    // Poses for each of the 4 cards:
+    // poseFan: Resting fan in Hero
+    // poseFloat: Levitation pose mid-scroll
+    // poseForm: Ambient background framing pose when viewing the inquiry form
     const cardDefs = [
-      { suit: '♣', rank: 'A', name: 'Ace of Clubs', angle: -0.28, x: -1.35, y: -0.2, z: -0.12 },
-      { suit: '♦', rank: 'A', name: 'Ace of Diamonds', angle: -0.09, x: -0.45, y: 0.05, z: 0.0 },
-      { suit: '♠', rank: 'A', name: 'Ace of Spades', angle: 0.09, x: 0.45, y: 0.05, z: 0.12 },
-      { suit: '♥', rank: 'A', name: 'Ace of Hearts', angle: 0.28, x: 1.35, y: -0.2, z: 0.24 }
+      {
+        suit: '♣',
+        rank: 'A',
+        name: 'Ace of Clubs',
+        // Hero Fan Pose (positioned cleanly below tagline)
+        hero: { x: -1.35, y: -0.75, z: -0.15, rotZ: -0.28, rotX: 0.02, rotY: 0 },
+        // Mid-Scroll Levitation Arch Pose
+        float: { x: -3.2, y: 1.4, z: 0.8, rotZ: -0.4, rotX: 0.2, rotY: 0.35 },
+        // Form Framing Pose (flanks the left side of the stationery sheet)
+        form: { x: -3.6, y: 0.1, z: -0.4, rotZ: -0.16, rotX: 0.08, rotY: 0.38 }
+      },
+      {
+        suit: '♦',
+        rank: 'A',
+        name: 'Ace of Diamonds',
+        hero: { x: -0.45, y: -0.55, z: 0.0, rotZ: -0.09, rotX: 0.02, rotY: 0 },
+        float: { x: -1.2, y: 2.1, z: 1.2, rotZ: -0.14, rotX: -0.15, rotY: -0.2 },
+        form: { x: -2.0, y: 2.0, z: -0.9, rotZ: -0.06, rotX: 0.05, rotY: 0.15 }
+      },
+      {
+        suit: '♠',
+        rank: 'A',
+        name: 'Ace of Spades',
+        hero: { x: 0.45, y: -0.55, z: 0.15, rotZ: 0.09, rotX: 0.02, rotY: 0 },
+        float: { x: 1.2, y: 2.1, z: 1.1, rotZ: 0.14, rotX: 0.15, rotY: 0.2 },
+        form: { x: 2.0, y: 2.0, z: -0.9, rotZ: 0.06, rotX: 0.05, rotY: -0.15 }
+      },
+      {
+        suit: '♥',
+        rank: 'A',
+        name: 'Ace of Hearts',
+        hero: { x: 1.35, y: -0.75, z: 0.3, rotZ: 0.28, rotX: 0.02, rotY: 0 },
+        float: { x: 3.2, y: 1.4, z: 0.7, rotZ: 0.4, rotX: -0.2, rotY: -0.35 },
+        form: { x: 3.6, y: 0.1, z: -0.4, rotZ: 0.16, rotX: 0.08, rotY: -0.38 }
+      }
     ];
 
     const cardGeom = new THREE.PlaneGeometry(1.65, 2.45, 1, 1);
-
     const backTexture = generateCardTexture('', '', true);
 
     this.cardsGroup = new THREE.Group();
@@ -228,19 +265,16 @@ export class MagicHeroScene {
         side: THREE.BackSide
       });
 
-      // Single card group containing front and back
       const singleCard = new THREE.Group();
       singleCard.userData = {
         id: index,
         name: def.name,
         suit: def.suit,
         rank: def.rank,
-        baseAngle: def.angle,
-        basePos: new THREE.Vector3(def.x, def.y, def.z),
-        targetPos: new THREE.Vector3(def.x, def.y, def.z),
-        targetRot: new THREE.Euler(0, 0, def.angle),
-        isFlipped: false,
-        isHovered: false
+        hero: def.hero,
+        float: def.float,
+        form: def.form,
+        isFlipped: false
       };
 
       const frontMesh = new THREE.Mesh(cardGeom, frontMat);
@@ -252,41 +286,40 @@ export class MagicHeroScene {
       singleCard.add(frontMesh);
       singleCard.add(backMesh);
 
-      singleCard.position.copy(singleCard.userData.basePos);
-      singleCard.rotation.z = def.angle;
+      singleCard.position.set(def.hero.x, def.hero.y, def.hero.z);
+      singleCard.rotation.set(def.hero.rotX, def.hero.rotY, def.hero.rotZ);
 
       this.cardsGroup.add(singleCard);
       this.cards.push(singleCard);
     });
 
-    // Position the cards group slightly lowered for natural breathing room
-    this.cardsGroup.position.set(0, -0.15, 0);
+    this.cardsGroup.position.set(0, -0.1, 0);
   }
 
   createGoldenParticles() {
-    const particleCount = 75;
+    const particleCount = 85;
     const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const scales = new Float32Array(particleCount);
 
     for (let i = 0; i < particleCount; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 12;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 7;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 5;
-      scales[i] = Math.random() * 0.8 + 0.3;
+      positions[i * 3] = (Math.random() - 0.5) * 14;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 10;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 8;
+      scales[i] = Math.random() * 0.7 + 0.3;
     }
 
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     geometry.setAttribute('scale', new THREE.BufferAttribute(scales, 1));
 
-    // Warm gold particle texture
+    // Circular golden dust texture
     const canvas = document.createElement('canvas');
     canvas.width = 64;
     canvas.height = 64;
     const ctx = canvas.getContext('2d');
     const grad = ctx.createRadialGradient(32, 32, 2, 32, 32, 30);
     grad.addColorStop(0, 'rgba(235, 205, 130, 0.95)');
-    grad.addColorStop(0.3, 'rgba(212, 175, 55, 0.6)');
+    grad.addColorStop(0.3, 'rgba(212, 175, 55, 0.55)');
     grad.addColorStop(1, 'rgba(212, 175, 55, 0)');
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, 64, 64);
@@ -294,7 +327,7 @@ export class MagicHeroScene {
     const texture = new THREE.CanvasTexture(canvas);
 
     const material = new THREE.PointsMaterial({
-      size: 0.18,
+      size: 0.17,
       map: texture,
       transparent: true,
       blending: THREE.AdditiveBlending,
@@ -305,49 +338,40 @@ export class MagicHeroScene {
     this.scene.add(this.particles);
   }
 
+  setScrollProgress(progress) {
+    this.scroll.target = Math.max(0, Math.min(1, progress));
+  }
+
   setupEvents() {
     this.onResize = () => {
-      if (!this.container) return;
-      const width = this.container.clientWidth;
-      const height = this.container.clientHeight || 520;
+      const width = window.innerWidth;
+      const height = window.innerHeight;
       this.camera.aspect = width / height;
       this.camera.updateProjectionMatrix();
       this.renderer.setSize(width, height);
     };
     window.addEventListener('resize', this.onResize);
 
-    // Mouse movement for subtle tilt
+    // Mouse movement
     this.onMouseMove = (e) => {
-      const rect = this.container.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width * 2 - 1;
-      const y = -((e.clientY - rect.top) / rect.height * 2 - 1);
-
+      const x = (e.clientX / window.innerWidth) * 2 - 1;
+      const y = -(e.clientY / window.innerHeight) * 2 + 1;
       this.mouse.targetX = x;
       this.mouse.targetY = y;
-
       this.pointer.x = x;
       this.pointer.y = y;
 
-      // Raycasting for card hover
       this.checkHover();
     };
     window.addEventListener('mousemove', this.onMouseMove);
 
     // Click on cards
     this.onClick = (e) => {
-      const rect = this.container.getBoundingClientRect();
-      if (
-        e.clientX >= rect.left &&
-        e.clientX <= rect.right &&
-        e.clientY >= rect.top &&
-        e.clientY <= rect.bottom
-      ) {
-        this.pointer.x = (e.clientX - rect.left) / rect.width * 2 - 1;
-        this.pointer.y = -((e.clientY - rect.top) / rect.height * 2 - 1);
-        this.handleCardClick();
-      }
+      this.pointer.x = (e.clientX / window.innerWidth) * 2 - 1;
+      this.pointer.y = -(e.clientY / window.innerHeight) * 2 + 1;
+      this.handleCardClick();
     };
-    this.container.addEventListener('click', this.onClick);
+    window.addEventListener('click', this.onClick);
   }
 
   checkHover() {
@@ -358,12 +382,12 @@ export class MagicHeroScene {
       let hitCard = intersects[0].object.userData.parentCard;
       if (hitCard && hitCard !== this.hoveredCard) {
         this.hoveredCard = hitCard;
-        this.container.style.cursor = 'pointer';
+        document.body.style.cursor = 'pointer';
       }
     } else {
       if (this.hoveredCard) {
         this.hoveredCard = null;
-        this.container.style.cursor = 'default';
+        document.body.style.cursor = 'default';
       }
     }
   }
@@ -375,10 +399,7 @@ export class MagicHeroScene {
     if (intersects.length > 0) {
       const card = intersects[0].object.userData.parentCard;
       if (card) {
-        // Toggle flip
         card.userData.isFlipped = !card.userData.isFlipped;
-
-        // Custom event for UI notification
         const evt = new CustomEvent('kelvin-card-click', {
           detail: {
             name: card.userData.name,
@@ -391,81 +412,82 @@ export class MagicHeroScene {
     }
   }
 
-  shuffleDeck() {
-    this.cards.forEach((card, idx) => {
-      const scatterX = (Math.random() - 0.5) * 3;
-      const scatterY = (Math.random() - 0.5) * 1.5;
-      const scatterAngle = (Math.random() - 0.5) * 1.2;
-
-      card.position.set(scatterX, scatterY, 0.8);
-      card.rotation.z = scatterAngle;
-      card.rotation.y = Math.PI * 2;
-    });
-
-    const evt = new CustomEvent('kelvin-card-shuffled');
-    window.dispatchEvent(evt);
-  }
-
-  resetFan() {
-    this.cards.forEach((card) => {
-      card.userData.isFlipped = false;
-    });
-  }
-
   animate() {
     this.animationId = requestAnimationFrame(() => this.animate());
 
     const delta = this.clock.getDelta();
     const elapsedTime = this.clock.getElapsedTime();
 
-    // Smooth camera tilt damping
+    // Smooth scroll interpolation
+    this.scroll.current += (this.scroll.target - this.scroll.current) * 0.08;
+    const p = this.scroll.current;
+
+    // Smooth mouse damping
     this.mouse.x += (this.mouse.targetX - this.mouse.x) * 0.05;
     this.mouse.y += (this.mouse.targetY - this.mouse.y) * 0.05;
 
+    // Camera perspective adjustment across scroll
+    this.camera.position.x = this.mouse.x * 0.4;
+    this.camera.position.y = this.mouse.y * 0.3 - p * 0.6;
+    this.camera.position.z = 7.5 + p * 1.0;
+
+    // Choreograph each of the 4 cards based on scrollProgress
     if (this.cardsGroup) {
-      // Gentle responsive tilt
-      this.cardsGroup.rotation.y = this.mouse.x * 0.22;
-      this.cardsGroup.rotation.x = -this.mouse.y * 0.16;
-
-      // Subtle organic breathing float
-      this.cardsGroup.position.y = -0.15 + Math.sin(elapsedTime * 1.5) * 0.04;
-
-      // Update individual cards
       this.cards.forEach((card, idx) => {
         const u = card.userData;
         const isHovered = (this.hoveredCard === card);
 
-        // Position interpolation
-        let targetX = u.basePos.x;
-        let targetY = u.basePos.y;
-        let targetZ = u.basePos.z;
+        // Multi-stage interpolation: Hero (p=0) -> Float (p=0.45) -> Form (p=1.0)
+        let targetX, targetY, targetZ;
+        let targetRotX, targetRotY, targetRotZ;
 
-        if (isHovered) {
-          targetY += 0.35;
-          targetZ += 0.6;
+        if (p < 0.45) {
+          const t = p / 0.45;
+          const ease = t * t * (3 - 2 * t); // Smooth cubic ease
+          targetX = THREE.MathUtils.lerp(u.hero.x, u.float.x, ease);
+          targetY = THREE.MathUtils.lerp(u.hero.y, u.float.y, ease);
+          targetZ = THREE.MathUtils.lerp(u.hero.z, u.float.z, ease);
+          targetRotX = THREE.MathUtils.lerp(u.hero.rotX, u.float.rotX, ease);
+          targetRotY = THREE.MathUtils.lerp(u.hero.rotY, u.float.rotY, ease);
+          targetRotZ = THREE.MathUtils.lerp(u.hero.rotZ, u.float.rotZ, ease);
+        } else {
+          const t = (p - 0.45) / 0.55;
+          const ease = t * t * (3 - 2 * t);
+          targetX = THREE.MathUtils.lerp(u.float.x, u.form.x, ease);
+          targetY = THREE.MathUtils.lerp(u.float.y, u.form.y, ease);
+          targetZ = THREE.MathUtils.lerp(u.float.z, u.form.z, ease);
+          targetRotX = THREE.MathUtils.lerp(u.float.rotX, u.form.rotX, ease);
+          targetRotY = THREE.MathUtils.lerp(u.float.rotY, u.form.rotY, ease);
+          targetRotZ = THREE.MathUtils.lerp(u.float.rotZ, u.form.rotZ, ease);
         }
 
+        // Subtle organic levitation float
+        const floatOffset = Math.sin(elapsedTime * 1.6 + idx * 0.8) * 0.06;
+        targetY += floatOffset;
+
+        // Hover elevation
+        if (isHovered) {
+          targetZ += 0.5;
+          targetY += 0.2;
+        }
+
+        // Apply positions
         card.position.x += (targetX - card.position.x) * 0.1;
         card.position.y += (targetY - card.position.y) * 0.1;
         card.position.z += (targetZ - card.position.z) * 0.1;
 
-        // Rotation interpolation
-        let targetRotZ = u.baseAngle;
-        if (isHovered) {
-          targetRotZ = u.baseAngle * 0.6;
-        }
-        card.rotation.z += (targetRotZ - card.rotation.z) * 0.1;
-
         // Flip rotation
-        const targetRotY = u.isFlipped ? Math.PI : 0;
-        card.rotation.y += (targetRotY - card.rotation.y) * 0.12;
+        const flipY = u.isFlipped ? Math.PI : 0;
+        card.rotation.x += (targetRotX - card.rotation.x) * 0.1;
+        card.rotation.y += ((targetRotY + flipY) - card.rotation.y) * 0.1;
+        card.rotation.z += (targetRotZ - card.rotation.z) * 0.1;
       });
     }
 
-    // Gentle particle motion
+    // Golden dust particles drifting in 3D
     if (this.particles) {
-      this.particles.rotation.y = elapsedTime * 0.025 + this.mouse.x * 0.1;
-      this.particles.rotation.x = Math.sin(elapsedTime * 0.02) * 0.05;
+      this.particles.rotation.y = elapsedTime * 0.02 + this.mouse.x * 0.08;
+      this.particles.position.y = -p * 2.0;
     }
 
     this.renderer.render(this.scene, this.camera);
@@ -475,8 +497,6 @@ export class MagicHeroScene {
     if (this.animationId) cancelAnimationFrame(this.animationId);
     window.removeEventListener('resize', this.onResize);
     window.removeEventListener('mousemove', this.onMouseMove);
-    if (this.container && this.onClick) {
-      this.container.removeEventListener('click', this.onClick);
-    }
+    window.removeEventListener('click', this.onClick);
   }
 }
