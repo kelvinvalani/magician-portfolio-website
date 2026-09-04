@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AURELIUS | Master of Modern Illusion & Mentalism</title>
+  <meta name="description" content="Experience world-class illusion and psychological mentalism for elite corporate galas, private soirées, and luxury weddings. Inquire now for dates worldwide." />
+  <meta name="theme-color" content="#07070c" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%2307070c' stroke='%23d4af37' stroke-width='4'/><text x='50' y='65' font-size='46' font-family='serif' fill='%23d4af37' text-anchor='middle'>A</text></svg>" />
+</head>
+<body>
+
+  <!-- SITE HEADER / NAVBAR -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-content">
+      <a href="#hero" class="brand-logo" aria-label="Aurelius Illusions Home">
+        <div class="brand-emblem">A</div>
+        <div class="brand-text">
+          <h1 class="serif-font">AURELIUS</h1>
+          <span>Modern Illusionist</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">The Magician</a></li>
+          <li><a href="#shows">Performances</a></li>
+          <li><a href="#media">Showreel</a></li>
+          <li><a href="#reviews">Accolades</a></li>
+          <li><a href="#booking">Book A Show</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="sound-toggle-btn" id="soundToggleBtn" aria-label="Toggle magical sound effects" title="Toggle audio experience">
+          <span class="sound-icon">🔇</span>
+        </button>
+        <a href="#booking" class="btn btn-gold btn-sm">Check Dates</a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Navigation Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION WITH THREE.JS CANVAS -->
+  <section class="hero-section" id="hero">
+    <!-- Three.js 3D WebGL Canvas Container -->
+    <div id="heroCanvasContainer" class="three-canvas-container" title="Drag to tilt camera, click cards to interact"></div>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-eyebrow">✦ Where Reality Bends & Wonder Begins ✦</div>
+        <h2 class="hero-title text-gradient-gold">IMPOSSIBLE MOMENTS, CRAFTED FOR THE UNFORGETTABLE.</h2>
+        <p class="hero-desc">
+          World-class sleight of hand, psychological mind reading, and cinematic stage illusions tailored for luxury weddings, high-profile corporate galas, and VIP private events worldwide.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#booking" class="btn btn-gold" id="heroBookCta">
+            <span>Request Booking & Date</span>
+            <span>→</span>
+          </a>
+          <button class="btn btn-outline open-video-btn" id="heroReelBtn">
+            <span>▶ Watch 2026 Showreel</span>
+          </button>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <h3>12+</h3>
+            <p>Years of Artistry</p>
+          </div>
+          <div class="stat-item">
+            <h3>500+</h3>
+            <p>Global Events</p>
+          </div>
+          <div class="stat-item">
+            <h3>100%</h3>
+            <p>Rave Disbelief</p>
+          </div>
+          <div class="stat-item">
+            <h3>★ 5.0</h3>
+            <p>Client Rating</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3D Interactive Canvas Control Pill -->
+    <div class="canvas-interactive-pill">
+      <span id="oracleStatusText">✦ Click or drag floating cards in 3D</span>
+      <button id="shuffleCardsBtn" title="Shuffle floating cards">Shuffle 3D Deck</button>
+      <button id="revealCardBtn" title="Reveal random card">Pick Mystery Card</button>
+    </div>
+  </section>
+
+  <!-- ABOUT THE MAGICIAN -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image-wrapper">
+          <img src="/images/magician-hero.jpg" alt="Aurelius Performing Sleight of Hand" loading="lazy" />
+          <div class="about-badge">
+            <strong>AURELIUS</strong> — Master Illusionist & Psychological Mentalist
+          </div>
+        </div>
+
+        <div class="about-text">
+          <span class="section-eyebrow">The Illusionist</span>
+          <h2 class="section-title text-gradient-gold">NOT JUST TRICKS. AN INDELIBLE SENSE OF WONDER.</h2>
+          <p>
+            Trained under master illusionists and performing regularly at private salons and grand theaters from London to Los Angeles, Aurelius has redefined magic for the contemporary era.
+          </p>
+          <p>
+            Discarding obsolete clichés and dated props, Aurelius brings a sharp, psychological sophistication that challenges perception itself. Guests don't merely observe the magic — they participate as the impossible unfolds in their own palms.
+          </p>
+          <p>
+            Whether circulating seamlessly during high-end cocktail hours or commanding a grand ballroom of 1,000 corporate leaders, every performance is executed with impeccable elegance, humor, and breathtaking precision.
+          </p>
+
+          <div class="accreditations">
+            <div class="accreditation-pill">🏛 The Magic Castle Performer</div>
+            <div class="accreditation-pill">🎩 International Brotherhood of Magicians</div>
+            <div class="accreditation-pill">⭐ Fully Insured & Vetted Worldwide</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOW PACKAGES & PERFORMANCES -->
+  <section class="packages-section" id="shows">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Signature Experiences</span>
+        <h2 class="section-title text-gradient-gold">CURATED SHOW PACKAGES</h2>
+        <p class="section-subtitle">
+          From intimate VIP dinners to grand corporate amphitheaters, explore signature formats designed to elevate your event.
+        </p>
+      </div>
+
+      <!-- Packages Container Populated by JS -->
+      <div class="packages-grid" id="packagesContainer"></div>
+
+      <!-- Interactive 3D Prophecy Banner -->
+      <div class="oracle-feature-banner">
+        <div class="oracle-text">
+          <h4 class="serif-font">Looking for a custom illusion or branded keynote reveal?</h4>
+          <p>We choreograph custom illusions incorporating company milestones, brand symbols, or VIP guest surprises.</p>
+        </div>
+        <a href="#booking" class="btn btn-outline btn-sm">Consult With Aurelius</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDIA SHOWCASE & VIDEO REEL -->
+  <section class="media-section" id="media">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Visual Evidence</span>
+        <h2 class="section-title text-gradient-gold">WITNESS THE UNEXPLAINED</h2>
+        <p class="section-subtitle">
+          A glimpse into the audience gasps, laughter, and pure astonishment captured live on stage and up close.
+        </p>
+      </div>
+
+      <div class="media-grid">
+        <!-- Main Featured Reel Card -->
+        <div class="featured-video-card open-video-btn" title="Click to watch 2026 performance highlights">
+          <img src="/images/stage-illusion.jpg" alt="Aurelius Grand Stage Show" loading="lazy" />
+          <div class="video-card-overlay">
+            <button class="play-pulse-btn" aria-label="Play showreel">▶</button>
+            <div class="reel-badge">OFFICIAL 2026 HIGHLIGHTS REEL</div>
+            <h3 class="serif-font" style="font-size: 1.6rem; color: #fff;">Grand Stage & Close-up Live Reel</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Watch live reactions from high-profile corporate galas and private soirées.</p>
+          </div>
+        </div>
+
+        <!-- Side Gallery Grid -->
+        <div class="video-gallery-side">
+          <div class="gallery-side-item">
+            <img src="/images/closeup-magic.jpg" alt="Intimate Sleight of Hand" class="gallery-thumb" loading="lazy" />
+            <div class="gallery-caption">Close-Up Sleight of Hand Miracles</div>
+          </div>
+          <div class="gallery-side-item">
+            <img src="/images/mentalism-magic.jpg" alt="Mind Reading Demonstration" class="gallery-thumb" loading="lazy" />
+            <div class="gallery-caption">Psychological Telepathy & Predictions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS & PRAISE -->
+  <section class="reviews-section" id="reviews">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Client Acclaim</span>
+        <h2 class="section-title text-gradient-gold">PRAISE FROM THE ASTONISHED</h2>
+        <p class="section-subtitle">
+          Trusted by Fortune 500 enterprises, celebrity hosts, and wedding couples worldwide.
+        </p>
+      </div>
+
+      <div class="testimonials-grid" id="testimonialsContainer"></div>
+    </div>
+  </section>
+
+  <!-- BOOKING & INQUIRY SECTION (Core requirement) -->
+  <section class="booking-section" id="booking">
+    <div class="container">
+      <div class="booking-layout">
+        <!-- Left: Booking Information Panel -->
+        <div class="booking-info-panel">
+          <span class="section-eyebrow">Reserve Your Date</span>
+          <h2 class="section-title text-gradient-gold">LET'S CREATE THE EXTRAORDINARY.</h2>
+          <p>
+            Dates for prime weekends, galas, and holiday seasons book quickly. Submit your inquiry below with your event date, location, guest count, and occasion. Aurelius will personally ring you back to discuss your vision.
+          </p>
+
+          <ul class="perks-list">
+            <li>
+              <div class="perk-icon">📞</div>
+              <div class="perk-text">
+                <strong>Direct Call-Back Within 24 Hours</strong>
+                <span>We reach out promptly to verify schedule and answer questions.</span>
+              </div>
+            </li>
+            <li>
+              <div class="perk-icon">🗺️</div>
+              <div class="perk-text">
+                <strong>Worldwide Travel Readiness</strong>
+                <span>Simple all-inclusive flat rates with travel and accommodations handled.</span>
+              </div>
+            </li>
+            <li>
+              <div class="perk-icon">✨</div>
+              <div class="perk-text">
+                <strong>100% Tailored Performance</strong>
+                <span>Paced specifically for your event timeline and room dynamics.</span>
+              </div>
+            </li>
+          </ul>
+
+          <div class="direct-call-card">
+            <span>Prefer an immediate conversation?</span>
+            <a href="tel:+15558326244">+1 (555) 832-6244</a>
+            <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Direct line for event planners & urgent inquiries</p>
+          </div>
+        </div>
+
+        <!-- Right: The Booking Inquiry Form -->
+        <div class="booking-form-box">
+          <div class="form-header">
+            <h3 class="serif-font text-gradient-gold">Request An Inquiry</h3>
+            <p>Fill out the details below to receive availability and tailored package options.</p>
+          </div>
+
+          <form id="bookingForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="eventDate">Event Date <span class="req">*</span></label>
+                <input type="date" id="eventDate" name="eventDate" class="form-input" required />
+              </div>
+              <div class="form-group">
+                <label for="location">Location / Venue City <span class="req">*</span></label>
+                <input type="text" id="location" name="location" placeholder="e.g. San Francisco (Fairmont Hotel)" class="form-input" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="occasion">Occasion Type <span class="req">*</span></label>
+                <select id="occasion" name="occasion" class="form-select" required>
+                  <option value="" disabled selected>Select event occasion...</option>
+                  <option value="Corporate Gala / Conference">Corporate Gala / Conference</option>
+                  <option value="Luxury Wedding Reception">Luxury Wedding Reception</option>
+                  <option value="Milestone Birthday / Anniversary">Milestone Birthday / Anniversary</option>
+                  <option value="VIP Private Soirée / Dinner">VIP Private Soirée / Dinner</option>
+                  <option value="Charity Fundraiser / Ball">Charity Fundraiser / Ball</option>
+                  <option value="Product Launch / Brand Activation">Product Launch / Brand Activation</option>
+                  <option value="Festival / Theatrical Booking">Festival / Theatrical Booking</option>
+                  <option value="Other Bespoke Celebration">Other Bespoke Celebration</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="guestCount">Estimated Guest Count <span class="req">*</span></label>
+                <select id="guestCount" name="guestCount" class="form-select" required>
+                  <option value="" disabled selected>Select audience size...</option>
+                  <option value="Intimate VIP (Under 25 guests)">Intimate VIP (Under 25 guests)</option>
+                  <option value="Salon / Cocktail (25 - 75 guests)">Salon / Cocktail (25 - 75 guests)</option>
+                  <option value="Ballroom (75 - 200 guests)">Ballroom (75 - 200 guests)</option>
+                  <option value="Grand Stage (200 - 500 guests)">Grand Stage (200 - 500 guests)</option>
+                  <option value="Arena / Theater (500+ guests)">Arena / Theater (500+ guests)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="showPackage">Desired Show Experience</label>
+              <select id="showPackage" name="showPackage" class="form-select">
+                <option value="Close-Up & Strolling Sleight of Hand">Close-Up & Strolling Sleight of Hand (Cocktails / Receptions)</option>
+                <option value="The Mentalism & Mind Reading Experience">The Mentalism & Mind Reading Experience (Interactive Banquet)</option>
+                <option value="Grand Stage & Illusion Spectacle">Grand Stage & Illusion Spectacle (Mainstage Headliner)</option>
+                <option value="The Bespoke VIP Experience">The Bespoke VIP Experience (Custom Magic & Reveals)</option>
+                <option value="Not Sure Yet — Let Aurelius Recommend">Not Sure Yet — Let Aurelius Recommend</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fullName">Your Full Name <span class="req">*</span></label>
+                <input type="text" id="fullName" name="fullName" placeholder="e.g. Eleanor Vance" class="form-input" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number <span class="req">*</span></label>
+                <input type="tel" id="phone" name="phone" placeholder="e.g. +1 (415) 555-0192" class="form-input" required />
+                <p class="phone-helper-text">✦ Aurelius will ring this number back to confirm your booking details.</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address <span class="req">*</span></label>
+              <input type="email" id="email" name="email" placeholder="e.g. eleanor@example.com" class="form-input" required />
+            </div>
+
+            <div class="form-group">
+              <label for="notes">Special Requests / Vision</label>
+              <textarea id="notes" name="notes" placeholder="Tell us about the schedule, any VIP guests, surprise moments, or venue specifics..." class="form-textarea"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-gold" style="width: 100%; padding: 16px;">
+              <span>Submit Booking Request</span>
+              <span>✦</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQS -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Everything You Need To Know</span>
+        <h2 class="section-title text-gradient-gold">FREQUENTLY ASKED QUESTIONS</h2>
+        <p class="section-subtitle">Transparent answers regarding sound, staging, travel, and reservations.</p>
+      </div>
+
+      <div class="faqs-container" id="faqsContainer"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER & SOCIAL MEDIA -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 16px;">
+            <div class="brand-emblem">A</div>
+            <div class="brand-text">
+              <h2 class="serif-font" style="font-size: 1.3rem;">AURELIUS</h2>
+              <span>Master Illusionist</span>
+            </div>
+          </div>
+          <p>
+            Elevating world-class celebrations with impossible psychological mentalism and modern sleight of hand illusions.
+          </p>
+          <div class="social-icons-row">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram" title="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="TikTok" title="TikTok">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="YouTube" title="YouTube">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook" title="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="serif-font">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#about">About Aurelius</a></li>
+            <li><a href="#shows">Performances</a></li>
+            <li><a href="#media">Showreel Video</a></li>
+            <li><a href="#reviews">Testimonials</a></li>
+            <li><a href="#booking">Booking Form</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="serif-font">Performances</h4>
+          <ul class="footer-links">
+            <li><a href="#shows">Close-Up Sleight of Hand</a></li>
+            <li><a href="#shows">Mentalism & Mind Reading</a></li>
+            <li><a href="#shows">Stage Illusion Headliner</a></li>
+            <li><a href="#shows">Custom VIP Activations</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="serif-font">Direct Contact</h4>
+          <p>Direct bookings & management:</p>
+          <p style="margin: 8px 0;"><strong>Phone:</strong> <a href="tel:+15558326244" style="color: var(--gold-light); text-decoration: none;">+1 (555) 832-6244</a></p>
+          <p><strong>Email:</strong> <a href="mailto:bookings@aureliusmagic.com" style="color: var(--gold-light); text-decoration: none;">bookings@aureliusmagic.com</a></p>
+          <p style="margin-top: 12px; font-size: 0.8rem; color: var(--text-dim);">Available for worldwide tours & domestic events.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Aurelius Magic & Illusions. All Rights Reserved.</div>
+        <div>Designed with Three.js & Modern Web Standards</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOOKING CONFIRMATION MODAL -->
+  <div class="modal-overlay" id="confirmationModal" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+    <div class="modal-box">
+      <button class="modal-close-btn" id="closeConfirmModalBtn" aria-label="Close dialog">✕</button>
+      <div class="seal-icon">✦</div>
+      <h3 id="confirmTitle" class="serif-font text-gradient-gold" style="text-align: center; font-size: 1.6rem; margin-bottom: 8px;">
+        Inquiry Sealed & Received
+      </h3>
+      <p style="text-align: center; color: var(--text-muted); font-size: 0.92rem;">
+        Thank you, <strong id="confirmName" style="color: #fff;"></strong>. Your booking request has been locked into Aurelius' schedule queue.
+      </p>
+
+      <div class="modal-summary-list">
+        <div><span>Booking Reference:</span> <strong id="confirmId" class="text-gold"></strong></div>
+        <div><span>Event Date:</span> <strong id="confirmDate" style="color: #fff;"></strong></div>
+        <div><span>Location:</span> <strong id="confirmLocation" style="color: #fff;"></strong></div>
+        <div><span>Occasion:</span> <strong id="confirmOccasion" style="color: #fff;"></strong></div>
+        <div><span>Guests:</span> <strong id="confirmGuests" style="color: #fff;"></strong></div>
+        <div><span>Callback Number:</span> <strong id="confirmPhone" class="text-gold"></strong></div>
+      </div>
+
+      <p style="font-size: 0.85rem; color: var(--text-dim); text-align: center; margin-bottom: 24px;">
+        Aurelius or executive management will call your number directly within 24 hours to confirm date availability, discuss room arrangements, and finalize your event quote.
+      </p>
+
+      <button class="btn btn-gold" style="width: 100%;" onclick="document.getElementById('confirmationModal').classList.remove('active'); document.body.style.overflow='';">
+        Understood, Close
+      </button>
+    </div>
+  </div>
+
+  <!-- VIDEO SHOWREEL MODAL -->
+  <div class="modal-overlay" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
+    <div class="modal-box video-modal-box">
+      <button class="modal-close-btn" id="closeVideoModalBtn" aria-label="Close video player">✕</button>
+      <h3 id="videoModalTitle" class="serif-font text-gradient-gold" style="margin-bottom: 16px;">
+        Aurelius: 2026 Theatrical Performance Reel
+      </h3>
+      <div id="videoPlayerFrame"></div>
+    </div>
+  </div>
+
+  <!-- IMAGE LIGHTBOX -->
+  <div class="modal-overlay" id="imageLightbox" role="dialog" aria-modal="true">
+    <div class="modal-box" style="max-width: 800px; padding: 12px; background: rgba(0,0,0,0.9);">
+      <button class="modal-close-btn" id="closeLightboxBtn" aria-label="Close image">✕</button>
+      <img id="lightboxImg" src="" alt="Aurelius Gallery Image" style="width: 100%; height: auto; border-radius: 8px; display: block;" />
+    </div>
+  </div>
+
+  <!-- MAGICIAN INQUIRY PORTAL TRIGGER (Discreet lead tracker for the magician) -->
+  <div class="admin-trigger-badge" id="adminDrawerToggle" title="Open Magician Leads Manager to view submitted client inquiries">
+    <span>🔮 Inquiries Vault</span>
+    <span class="badge-count" id="adminInquiryCount">0</span>
+  </div>
+
+  <!-- MAGICIAN INQUIRY DRAWER -->
+  <aside class="admin-drawer" id="adminDrawer" aria-label="Magician Inquiries Portal">
+    <div class="admin-drawer-header">
+      <div>
+        <h3 class="serif-font">Magician Leads Vault</h3>
+        <small style="color: var(--text-dim);">Real-time Client Booking Requests</small>
+      </div>
+      <button class="modal-close-btn" id="adminDrawerClose" style="position: static;" aria-label="Close Inquiries Drawer">✕</button>
+    </div>
+    <div class="admin-drawer-body" id="adminInquiryList">
+      <!-- Populated dynamically by bookingManager.js -->
+    </div>
+  </aside>
+
+  <!-- FLOATING MOBILE ACTION BAR -->
+  <div class="mobile-action-bar">
+    <div class="mobile-action-inner">
+      <a href="tel:+15558326244" class="btn btn-outline">
+        <span>📞 Call Now</span>
+      </a>
+      <a href="#booking" class="btn btn-gold">
+        <span>✦ Book Show</span>
+      </a>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
