@@ -15,15 +15,6 @@
 </head>
 <body>
 
-  <!-- AMBIENT VIDEO BACKGROUND -->
-  <div class="video-bg-container" id="videoBgContainer" aria-hidden="true">
-    <video id="bgVideo" class="bg-video" autoplay muted loop playsinline poster="/images/magician-hero.jpg">
-      <source src="/videos/reel.mp4" type="video/mp4">
-    </video>
-    <div class="video-ambient-tint"></div>
-    <div class="video-grain"></div>
-  </div>
-
   <!-- PERSISTENT SCROLL-DRIVEN THREE.JS 3D CANVAS -->
   <div id="threeHeroCanvas" class="three-stage-canvas" aria-hidden="true"></div>
 
@@ -37,12 +28,20 @@
 
       <div class="header-actions">
         <div class="header-socials">
+          <a href="#reels" class="header-link">
+            <span>Archive</span>
+          </a>
+          <span class="sep">/</span>
           <a href="https://instagram.com/magicbykelvin" target="_blank" rel="noopener noreferrer" class="header-link">
             <span>Instagram</span>
           </a>
           <span class="sep">/</span>
           <a href="https://tiktok.com/@magicbykelvin" target="_blank" rel="noopener noreferrer" class="header-link">
             <span>TikTok</span>
+          </a>
+          <span class="sep">/</span>
+          <a href="https://facebook.com/magicbykelvin" target="_blank" rel="noopener noreferrer" class="header-link">
+            <span>Facebook</span>
           </a>
         </div>
         <a href="#inquiry" class="btn btn-outline btn-sm">Reserve Date</a>
@@ -61,19 +60,173 @@
         <!-- Spatial placeholder maintaining perfect vertical pacing for the 3D card fan -->
         <div class="hero-card-stage-spacer"></div>
 
+        <div class="card-interaction-cue" id="cardInteractionCue">
+          <span class="cue-suit">♠</span>
+          <span class="cue-message">Select any card to unveil its performance act</span>
+          <span class="cue-suit">♥</span>
+        </div>
+
         <div class="hero-ctas">
           <a href="#inquiry" class="btn btn-solid">
             <span>Request Booking</span>
             <span class="arrow">↓</span>
           </a>
-          <a href="https://instagram.com/magicbykelvin" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-            <span>DM on Instagram</span>
+          <a href="#reels" class="btn btn-outline">
+            <span>View Acts & Reels</span>
           </a>
         </div>
 
         <div class="scroll-down-cue">
           <span class="cue-line"></span>
           <span class="cue-text">Scroll to explore</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHIVE OF ILLUSIONS (THE FOUR ACES REELS FOLIO) -->
+    <section class="reels-section" id="reels">
+      <div class="reels-container">
+        <div class="reels-header">
+          <div class="reels-suits">♣ &nbsp; ♦ &nbsp; ♠ &nbsp; ♥</div>
+          <div class="reels-eyebrow">Curated Moments Captured Live</div>
+          <h2 class="reels-title">Archive of Illusions</h2>
+          <p class="reels-subtext">
+            Four acts of digital dexterity, unspoken mentalism, and breathless wonder filmed live at private dinner soirées, luxury galas, and bespoke weddings.
+          </p>
+        </div>
+
+        <div class="reels-grid" id="reelsGrid">
+          <!-- Act I: Sleight of Hand -->
+          <article class="reel-card" data-act-index="0" data-act-id="act-1" tabindex="0" role="button" aria-label="Play Act I: Sleight of Hand & Cardistry">
+            <div class="card-corner top-left"></div>
+            <div class="card-corner top-right"></div>
+            <div class="card-corner bottom-left"></div>
+            <div class="card-corner bottom-right"></div>
+
+            <div class="reel-viewport">
+              <img class="reel-card-poster" src="/images/closeup-magic.jpg" alt="Act I: Sleight of Hand & Cardistry" loading="lazy" />
+              <video class="reel-preview-video" muted loop playsinline preload="none" data-src="/videos/reel.mp4"></video>
+              <div class="reel-tint-overlay"></div>
+              <div class="reel-play-indicator" aria-hidden="true">
+                <span class="play-glyph">▶</span>
+                <span class="play-label">Unveil Act</span>
+              </div>
+            </div>
+
+            <div class="reel-card-info">
+              <div class="reel-badge">
+                <span class="badge-suit">♣</span>
+                <span class="badge-act">Act I</span>
+                <span class="badge-dot">&bull;</span>
+                <span class="badge-time">0:14</span>
+              </div>
+              <h3 class="reel-card-title">Sleight of Hand & Cardistry</h3>
+              <p class="reel-card-venue">Mayfair Private Salon • London</p>
+              <div class="reel-card-cta">
+                <span>Play Reel With Sound</span>
+                <span class="cta-arrow">→</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Act II: Mentalism -->
+          <article class="reel-card" data-act-index="1" data-act-id="act-2" tabindex="0" role="button" aria-label="Play Act II: Mind & Silent Perception">
+            <div class="card-corner top-left"></div>
+            <div class="card-corner top-right"></div>
+            <div class="card-corner bottom-left"></div>
+            <div class="card-corner bottom-right"></div>
+
+            <div class="reel-viewport">
+              <img class="reel-card-poster" src="/images/mentalism-magic.jpg" alt="Act II: Mind & Silent Perception" loading="lazy" />
+              <video class="reel-preview-video" muted loop playsinline preload="none" data-src="/videos/reel.mp4"></video>
+              <div class="reel-tint-overlay"></div>
+              <div class="reel-play-indicator" aria-hidden="true">
+                <span class="play-glyph">▶</span>
+                <span class="play-label">Unveil Act</span>
+              </div>
+            </div>
+
+            <div class="reel-card-info">
+              <div class="reel-badge">
+                <span class="badge-suit">♦</span>
+                <span class="badge-act">Act II</span>
+                <span class="badge-dot">&bull;</span>
+                <span class="badge-time">0:14</span>
+              </div>
+              <h3 class="reel-card-title">Mind & Silent Perception</h3>
+              <p class="reel-card-venue">High-Table Gala • Edinburgh</p>
+              <div class="reel-card-cta">
+                <span>Play Reel With Sound</span>
+                <span class="cta-arrow">→</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Act III: Signature Miracle -->
+          <article class="reel-card" data-act-index="2" data-act-id="act-3" tabindex="0" role="button" aria-label="Play Act III: The Impossible Location">
+            <div class="card-corner top-left"></div>
+            <div class="card-corner top-right"></div>
+            <div class="card-corner bottom-left"></div>
+            <div class="card-corner bottom-right"></div>
+
+            <div class="reel-viewport">
+              <img class="reel-card-poster" src="/images/stage-illusion.jpg" alt="Act III: The Impossible Location" loading="lazy" />
+              <video class="reel-preview-video" muted loop playsinline preload="none" data-src="/videos/reel.mp4"></video>
+              <div class="reel-tint-overlay"></div>
+              <div class="reel-play-indicator" aria-hidden="true">
+                <span class="play-glyph">▶</span>
+                <span class="play-label">Unveil Act</span>
+              </div>
+            </div>
+
+            <div class="reel-card-info">
+              <div class="reel-badge">
+                <span class="badge-suit">♠</span>
+                <span class="badge-act">Act III</span>
+                <span class="badge-dot">&bull;</span>
+                <span class="badge-time">0:14</span>
+              </div>
+              <h3 class="reel-card-title">The Impossible Location</h3>
+              <p class="reel-card-venue">Grand Ballroom • Kensington</p>
+              <div class="reel-card-cta">
+                <span>Play Reel With Sound</span>
+                <span class="cta-arrow">→</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Act IV: Bespoke Soirées -->
+          <article class="reel-card" data-act-index="3" data-act-id="act-4" tabindex="0" role="button" aria-label="Play Act IV: Bespoke Soirées & Reactions">
+            <div class="card-corner top-left"></div>
+            <div class="card-corner top-right"></div>
+            <div class="card-corner bottom-left"></div>
+            <div class="card-corner bottom-right"></div>
+
+            <div class="reel-viewport">
+              <img class="reel-card-poster" src="/images/magician-hero.jpg" alt="Act IV: Bespoke Soirées & Reactions" loading="lazy" />
+              <video class="reel-preview-video" muted loop playsinline preload="none" data-src="/videos/reel.mp4"></video>
+              <div class="reel-tint-overlay"></div>
+              <div class="reel-play-indicator" aria-hidden="true">
+                <span class="play-glyph">▶</span>
+                <span class="play-label">Unveil Act</span>
+              </div>
+            </div>
+
+            <div class="reel-card-info">
+              <div class="reel-badge">
+                <span class="badge-suit">♥</span>
+                <span class="badge-act">Act IV</span>
+                <span class="badge-dot">&bull;</span>
+                <span class="badge-time">0:14</span>
+              </div>
+              <h3 class="reel-card-title">Bespoke Soirées & Reactions</h3>
+              <p class="reel-card-venue">Château Reception • Provence</p>
+              <div class="reel-card-cta">
+                <span>Play Reel With Sound</span>
+                <span class="cta-arrow">→</span>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -181,6 +334,10 @@
           <span>TikTok</span>
         </a>
         <span class="dot">&bull;</span>
+        <a href="https://facebook.com/magicbykelvin" target="_blank" rel="noopener noreferrer" class="footer-link">
+          <span>Facebook</span>
+        </a>
+        <span class="dot">&bull;</span>
         <a href="mailto:kelvin@magicbykelvin.com" class="footer-link">
           <span>Email Kelvin</span>
         </a>
@@ -192,11 +349,93 @@
     </div>
   </footer>
 
-  <!-- Subtle ambient video controller in bottom right corner -->
-  <button id="videoToggleBtn" class="ambient-video-toggle" title="Toggle background video playback" aria-label="Toggle background video">
-    <span id="videoToggleIcon">⏸</span>
-    <span class="toggle-text">Ambient Reel</span>
-  </button>
+  <!-- SALON THEATER FOCUS MODE (BESPOKE REELS PLAYER) -->
+  <div class="salon-theater-modal" id="salonTheaterModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Archive Reel Focus Player">
+    <div class="salon-theater-backdrop" id="theaterBackdrop"></div>
+    
+    <div class="salon-theater-dialog">
+      <!-- Architectural Top Navigation Bar -->
+      <div class="theater-top-bar">
+        <div class="theater-act-tabs" id="theaterActTabs">
+          <button class="theater-tab active" data-act-index="0" aria-label="Switch to Act I">
+            <span class="tab-suit">♣</span>
+            <span class="tab-label">Act I</span>
+          </button>
+          <button class="theater-tab" data-act-index="1" aria-label="Switch to Act II">
+            <span class="tab-suit">♦</span>
+            <span class="tab-label">Act II</span>
+          </button>
+          <button class="theater-tab" data-act-index="2" aria-label="Switch to Act III">
+            <span class="tab-suit">♠</span>
+            <span class="tab-label">Act III</span>
+          </button>
+          <button class="theater-tab" data-act-index="3" aria-label="Switch to Act IV">
+            <span class="tab-suit">♥</span>
+            <span class="tab-label">Act IV</span>
+          </button>
+        </div>
+
+        <button class="theater-close-btn" id="theaterCloseBtn" aria-label="Close salon theater">
+          <span class="close-text">Close</span>
+          <span class="close-cross">✕</span>
+        </button>
+      </div>
+
+      <!-- The Focused Reel Frame -->
+      <div class="theater-viewport" id="theaterViewport">
+        <div class="viewport-corner top-left"></div>
+        <div class="viewport-corner top-right"></div>
+        <div class="viewport-corner bottom-left"></div>
+        <div class="viewport-corner bottom-right"></div>
+
+        <div class="theater-video-container">
+          <video id="theaterVideo" class="theater-video-element" playsinline preload="auto" loop poster="/images/closeup-magic.jpg">
+            <source src="/videos/reel.mp4" type="video/mp4">
+          </video>
+          <div class="theater-film-grain"></div>
+          <div class="theater-vignette"></div>
+        </div>
+
+        <!-- Hairline Gold Time Scrubber -->
+        <div class="theater-scrubber-track" id="theaterScrubberTrack" title="Seek video position">
+          <div class="theater-scrubber-fill" id="theaterScrubberFill"></div>
+        </div>
+
+        <!-- On-Screen Hover Micro-Controls -->
+        <div class="theater-viewport-controls">
+          <button class="theater-control-btn" id="theaterPlayBtn" title="Play / Pause (Space)">
+            <span id="theaterPlayIcon">⏸</span>
+          </button>
+          <div class="theater-time-stamp" id="theaterTimestamp">0:00 / 0:14</div>
+          <button class="theater-control-btn sound-toggle" id="theaterSoundBtn" title="Toggle Sound (M)">
+            <span id="theaterSoundIcon">🔊</span>
+            <span class="sound-label" id="theaterSoundLabel">Sound On</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Editorial Footer Metadata & Occasion Booking Trigger -->
+      <div class="theater-footer">
+        <div class="theater-metadata">
+          <div class="theater-act-header">
+            <span class="theater-act-badge" id="theaterActBadge">♣ Act I</span>
+            <span class="theater-sep">&bull;</span>
+            <span class="theater-genre" id="theaterGenre">Close-Up & Intimate Wonder</span>
+          </div>
+          <h3 class="theater-act-title" id="theaterActTitle">Sleight of Hand & Cardistry</h3>
+          <p class="theater-venue-line" id="theaterVenue">Mayfair Private Salon • London</p>
+          <p class="theater-description" id="theaterDesc">Moments of pure digital dexterity and calm astonishment inches from your guests' eyes.</p>
+        </div>
+
+        <div class="theater-actions">
+          <button class="btn btn-solid" id="theaterInquireBtn">
+            <span>Inquire For This Act</span>
+            <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script type="module" src="/src/main.js"></script>
 </body>

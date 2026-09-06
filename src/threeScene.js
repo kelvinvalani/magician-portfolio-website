@@ -208,7 +208,7 @@ export class MagicHeroScene {
         rank: 'A',
         name: 'Ace of Clubs',
         // Hero Fan Pose (positioned cleanly below tagline)
-        hero: { x: -1.35, y: -0.75, z: -0.15, rotZ: -0.28, rotX: 0.02, rotY: 0 },
+        hero: { x: -1.35, y: -0.25, z: -0.15, rotZ: -0.28, rotX: 0.02, rotY: 0 },
         // Mid-Scroll Levitation Arch Pose
         float: { x: -3.2, y: 1.4, z: 0.8, rotZ: -0.4, rotX: 0.2, rotY: 0.35 },
         // Form Framing Pose (flanks the left side of the stationery sheet)
@@ -218,7 +218,7 @@ export class MagicHeroScene {
         suit: '♦',
         rank: 'A',
         name: 'Ace of Diamonds',
-        hero: { x: -0.45, y: -0.55, z: 0.0, rotZ: -0.09, rotX: 0.02, rotY: 0 },
+        hero: { x: -0.45, y: -0.05, z: 0.0, rotZ: -0.09, rotX: 0.02, rotY: 0 },
         float: { x: -1.2, y: 2.1, z: 1.2, rotZ: -0.14, rotX: -0.15, rotY: -0.2 },
         form: { x: -2.0, y: 2.0, z: -0.9, rotZ: -0.06, rotX: 0.05, rotY: 0.15 }
       },
@@ -226,7 +226,7 @@ export class MagicHeroScene {
         suit: '♠',
         rank: 'A',
         name: 'Ace of Spades',
-        hero: { x: 0.45, y: -0.55, z: 0.15, rotZ: 0.09, rotX: 0.02, rotY: 0 },
+        hero: { x: 0.45, y: -0.05, z: 0.15, rotZ: 0.09, rotX: 0.02, rotY: 0 },
         float: { x: 1.2, y: 2.1, z: 1.1, rotZ: 0.14, rotX: 0.15, rotY: 0.2 },
         form: { x: 2.0, y: 2.0, z: -0.9, rotZ: 0.06, rotX: 0.05, rotY: -0.15 }
       },
@@ -234,7 +234,7 @@ export class MagicHeroScene {
         suit: '♥',
         rank: 'A',
         name: 'Ace of Hearts',
-        hero: { x: 1.35, y: -0.75, z: 0.3, rotZ: 0.28, rotX: 0.02, rotY: 0 },
+        hero: { x: 1.35, y: -0.25, z: 0.3, rotZ: 0.28, rotX: 0.02, rotY: 0 },
         float: { x: 3.2, y: 1.4, z: 0.7, rotZ: 0.4, rotX: -0.2, rotY: -0.35 },
         form: { x: 3.6, y: 0.1, z: -0.4, rotZ: 0.16, rotX: 0.08, rotY: -0.38 }
       }
@@ -383,11 +383,27 @@ export class MagicHeroScene {
       if (hitCard && hitCard !== this.hoveredCard) {
         this.hoveredCard = hitCard;
         document.body.style.cursor = 'pointer';
+
+        const cueEl = document.getElementById('cardInteractionCue');
+        if (cueEl) {
+          const actTitles = [
+            'Act I: Sleight of Hand & Cardistry',
+            'Act II: Mind & Silent Perception',
+            'Act III: The Impossible Location',
+            'Act IV: Bespoke Soirées & Reactions'
+          ];
+          cueEl.innerHTML = `<span class="cue-suit">${hitCard.userData.suit}</span><span class="cue-message">Click to unveil ${actTitles[hitCard.userData.id]}</span><span class="cue-suit">${hitCard.userData.suit}</span>`;
+        }
       }
     } else {
       if (this.hoveredCard) {
         this.hoveredCard = null;
         document.body.style.cursor = 'default';
+
+        const cueEl = document.getElementById('cardInteractionCue');
+        if (cueEl) {
+          cueEl.innerHTML = `<span class="cue-suit">♠</span><span class="cue-message">Select any card to unveil its performance act</span><span class="cue-suit">♥</span>`;
+        }
       }
     }
   }
@@ -402,6 +418,7 @@ export class MagicHeroScene {
         card.userData.isFlipped = !card.userData.isFlipped;
         const evt = new CustomEvent('kelvin-card-click', {
           detail: {
+            id: card.userData.id,
             name: card.userData.name,
             suit: card.userData.suit,
             isFlipped: card.userData.isFlipped
@@ -437,21 +454,32 @@ export class MagicHeroScene {
         const u = card.userData;
         const isHovered = (this.hoveredCard === card);
 
-        // Multi-stage interpolation: Hero (p=0) -> Float (p=0.45) -> Form (p=1.0)
+        // Three-stage choreography:
+        // 1. Hero resting fan (p: 0 -> 0.30)
+        // 2. Archive levitation arch (p: 0.30 -> 0.68)
+        // 3. Stationery inquiry framing (p: 0.68 -> 1.0)
         let targetX, targetY, targetZ;
         let targetRotX, targetRotY, targetRotZ;
 
-        if (p < 0.45) {
-          const t = p / 0.45;
-          const ease = t * t * (3 - 2 * t); // Smooth cubic ease
+        if (p < 0.32) {
+          const t = p / 0.32;
+          const ease = t * t * (3 - 2 * t);
           targetX = THREE.MathUtils.lerp(u.hero.x, u.float.x, ease);
           targetY = THREE.MathUtils.lerp(u.hero.y, u.float.y, ease);
           targetZ = THREE.MathUtils.lerp(u.hero.z, u.float.z, ease);
           targetRotX = THREE.MathUtils.lerp(u.hero.rotX, u.float.rotX, ease);
           targetRotY = THREE.MathUtils.lerp(u.hero.rotY, u.float.rotY, ease);
           targetRotZ = THREE.MathUtils.lerp(u.hero.rotZ, u.float.rotZ, ease);
+        } else if (p < 0.65) {
+          // Stable levitation arch above the reels section
+          targetX = u.float.x;
+          targetY = u.float.y;
+          targetZ = u.float.z;
+          targetRotX = u.float.rotX;
+          targetRotY = u.float.rotY;
+          targetRotZ = u.float.rotZ;
         } else {
-          const t = (p - 0.45) / 0.55;
+          const t = (p - 0.65) / 0.35;
           const ease = t * t * (3 - 2 * t);
           targetX = THREE.MathUtils.lerp(u.float.x, u.form.x, ease);
           targetY = THREE.MathUtils.lerp(u.float.y, u.form.y, ease);
